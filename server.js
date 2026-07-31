@@ -11,13 +11,17 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // PostgreSQL Connection Pool
-const pool = new Pool({
-  user: process.env.PGUSER || 'postgres',
-  host: process.env.PGHOST || 'localhost',
-  database: process.env.PGDATABASE || 'centermotorclub',
-  password: process.env.PGPASSWORD || 'root',
-  port: process.env.PGPORT || 5432,
-});
+const poolConfig = process.env.DATABASE_URL 
+  ? { connectionString: process.env.DATABASE_URL }
+  : {
+      user: process.env.PGUSER || 'postgres',
+      host: process.env.PGHOST || 'localhost',
+      database: process.env.PGDATABASE || 'centermotorclub',
+      password: process.env.PGPASSWORD || 'root',
+      port: process.env.PGPORT || 5432,
+    };
+
+const pool = new Pool(poolConfig);
 
 app.use(cors());
 app.use(express.json());
