@@ -356,10 +356,14 @@ app.post('/api/motors/:id/history', requireAdmin, async (req, res) => {
   }
 });
 
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log(`====================================================`);
+  console.log('====================================================');
   console.log(`CENTER MOTOR CLUB Express REST API Server (Secured)`);
   console.log(`Connected to local PostgreSQL DB: centermotorclub`);
   console.log(`Server running on http://localhost:${PORT}`);
-  console.log(`====================================================`);
+  console.log('====================================================');
 });
+
+// Export the Express API for Vercel Serverless Functions
+module.exports = app;
