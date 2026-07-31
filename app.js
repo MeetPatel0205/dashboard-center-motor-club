@@ -395,8 +395,8 @@ function initKpis() {
 
   document.getElementById('kpiTotalMotors').textContent = total.toLocaleString();
   document.getElementById('sidebarTotalCount').textContent = `${total.toLocaleString()} PostgreSQL Motors`;
-  document.getElementById('kpiHtMotors').textContent = (summary.ht_motors_count || 769).toLocaleString();
-  document.getElementById('kpiLtMotors').textContent = (summary.lt_motors_count || 350).toLocaleString();
+  document.getElementById('kpiHtMotors').textContent = (summary.ht_motors_count ?? 0).toLocaleString();
+  document.getElementById('kpiLtMotors').textContent = (summary.lt_motors_count ?? 0).toLocaleString();
   
   document.getElementById('kpiCriticalMotors').textContent = critical.toLocaleString();
   document.getElementById('kpiCriticalPercent').textContent = `${critPct}% Critical`;
