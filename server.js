@@ -15,7 +15,8 @@ const connectionString = process.env.POSTGRES_URL || process.env.DATABASE_URL;
 const poolConfig = connectionString
   ? { 
       connectionString: connectionString,
-      ssl: { rejectUnauthorized: false }
+      ssl: { rejectUnauthorized: false },
+      connectionTimeoutMillis: 5000 // Timeout before Vercel kills the function
     }
   : {
       user: process.env.PGUSER || 'postgres',
