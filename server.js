@@ -12,7 +12,10 @@ const PORT = process.env.PORT || 5000;
 
 // PostgreSQL Connection Pool
 const poolConfig = process.env.DATABASE_URL 
-  ? { connectionString: process.env.DATABASE_URL }
+  ? { 
+      connectionString: process.env.DATABASE_URL,
+      ssl: { rejectUnauthorized: false }
+    }
   : {
       user: process.env.PGUSER || 'postgres',
       host: process.env.PGHOST || 'localhost',
