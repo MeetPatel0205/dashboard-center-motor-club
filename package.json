@@ -1,0 +1,17 @@
+{
+  "name": "center-motor-club-backend",
+  "version": "1.0.0",
+  "description": "PostgreSQL Express API Backend for Center Motor Club Maintenance Portal",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "seed": "node seed_database.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "pg": "^8.13.1"
+  }
+}
