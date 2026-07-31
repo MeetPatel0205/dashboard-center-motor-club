@@ -42,6 +42,25 @@ const requireAdmin = (req, res, next) => {
   next();
 };
 
+// Debug Endpoint to test Database Connection explicitly
+app.get('/api/debug', async (req, res) => {
+  try {
+    const client = await pool.connect();
+    const result = await client.query('SELECT NOW()');
+    client.release();
+    
+    // Check if tables exist
+    try {
+      const tableCheck = await pool.query('SELECT COUNT(*) FROM motors');
+      res.json({ status: 'success', message: 'Connected to Supabase DB successfully!', time: result.rows[0].now, motorsCount: tableCheck.rows[0].count });
+    } catch (tableErr) {
+      res.json({ status: 'warning', message: 'Connected to Supabase, but motors table is missing!', error: tableErr.message });
+    }
+  } catch (err) {
+    res.status(500).json({ status: 'error', error: err.message, stack: err.stack, connectionStringUsed: !!poolConfig.connectionString });
+  }
+});
+
 // 1. GET Dashboard Aggregated Metrics Summary (Public for Authenticated Session)
 app.get('/api/summary', async (req, res) => {
   try {
