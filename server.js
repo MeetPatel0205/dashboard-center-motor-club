@@ -11,8 +11,8 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // PostgreSQL Connection Pool
-const connectionString = process.env.DATABASE_URL || process.env.POSTGRES_URL;
-const poolConfig = connectionString 
+const connectionString = process.env.POSTGRES_URL || process.env.DATABASE_URL;
+const poolConfig = connectionString
   ? { 
       connectionString: connectionString,
       ssl: { rejectUnauthorized: false }
