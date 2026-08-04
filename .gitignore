@@ -1,4 +1,9 @@
 node_modules/
 .env
+.env.local
 .DS_Store
+*.xlsx
+ht_motors_data.json
+supabase_data_migration.sql
+test_pg.js
 my-clerk-app/
