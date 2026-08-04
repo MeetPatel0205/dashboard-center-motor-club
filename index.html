@@ -19,7 +19,12 @@
   
   <!-- html2pdf.js CDN -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-
+  <!-- Anti-Flicker Script (Session Persist) -->
+  <script>
+    if (localStorage.getItem('centermotor_user')) {
+      document.write('<style>#loginScreen { display: none !important; } #appShell { display: flex !important; }</style>');
+    }
+  </script>
 </head>
 <body>
 
@@ -30,7 +35,7 @@
       <div style="background: var(--bg-card); padding: 40px; border-radius: var(--radius-lg); border: 1px solid var(--border-color); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); max-width: 400px; width: 100%; text-align: center;">
         
         <div class="login-logo" style="background: transparent; box-shadow: none; width: 140px; height: auto; margin: 0 auto 16px auto;">
-          <img src="amns-logo.png" alt="AM/NS INDIA Logo" style="width: 100%; height: auto; display: block;">
+          <img src="amns_logo.png" alt="AM/NS INDIA Logo" style="width: 100%; height: auto; display: block;">
         </div>
         
         <h2 style="font-size: 24px; font-weight: 800; color: var(--primary); margin-bottom: 6px;">CENTRAL MOTOR MONITORING</h2>
@@ -67,7 +72,7 @@
     <aside class="sidebar">
       <div class="sidebar-header">
         <div class="sidebar-logo" style="background: transparent; box-shadow: none; width: 100px; height: auto;">
-          <img src="amns-logo.png" alt="AM/NS INDIA Logo" style="width: 100%; height: auto; display: block;">
+          <img src="amns_logo.png" alt="AM/NS INDIA Logo" style="width: 100%; height: auto; display: block;">
         </div>
         <div class="sidebar-brand">
           <h2>CENTRAL MOTOR MONITORING</h2>

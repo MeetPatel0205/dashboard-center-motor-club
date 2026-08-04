@@ -38,9 +38,31 @@ let historyChartInstance = null;
 let currentHistoryMotorId = null;
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Restore session from localStorage if available
+  const storedUser = localStorage.getItem('centermotor_user');
+  if (storedUser) {
+    try {
+      currentUser = JSON.parse(storedUser);
+      isLoggedIn = true;
+      
+      document.getElementById('loginScreen').classList.add('hidden');
+      document.getElementById('appShell').classList.remove('hidden');
+      document.getElementById('userName').textContent = currentUser.name;
+      document.getElementById('userAvatar').textContent = currentUser.name.charAt(0).toUpperCase();
+      setUserRole(currentUser.role);
+    } catch (e) {
+      console.error('Failed to parse stored user session');
+      localStorage.removeItem('centermotor_user');
+    }
+  }
+
   // Enforce session lock on initial load
   enforceSessionGuard();
-  loadDashboardData();
+  
+  if (isLoggedIn) {
+    loadUserManagementDirectory();
+    loadDashboardData();
+  }
 });
 
 // Enforce Session Lock (Prevents Login Bypass via URL or DOM)
@@ -90,6 +112,7 @@ async function handleLoginSubmit(e) {
 
     currentUser = data.user;
     isLoggedIn = true;
+    localStorage.setItem('centermotor_user', JSON.stringify(currentUser));
 
     // Transition to main app
     document.getElementById('loginScreen').classList.add('hidden');
@@ -110,6 +133,7 @@ async function handleLoginSubmit(e) {
 function handleLogout() {
   isLoggedIn = false;
   currentUser = null;
+  localStorage.removeItem('centermotor_user');
   document.getElementById('appShell').classList.add('hidden');
   document.getElementById('loginScreen').classList.remove('hidden');
 }
@@ -132,6 +156,7 @@ async function handleLoginSubmit(e) {
 
     currentUser = data.user;
     isLoggedIn = true;
+    localStorage.setItem('centermotor_user', JSON.stringify(currentUser));
 
     document.getElementById('loginScreen').classList.add('hidden');
     document.getElementById('appShell').classList.remove('hidden');
