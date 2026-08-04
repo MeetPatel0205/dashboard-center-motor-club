@@ -1,5 +1,5 @@
 /* ==========================================================================
-   CENTER MOTOR CLUB - JAVASCRIPT APP ENGINE (HARDENED SECURITY & ROUTE GUARDS)
+   CENTRAL MOTOR MONITORING - JAVASCRIPT APP ENGINE (HARDENED SECURITY & ROUTE GUARDS)
    Backend Connection: Local PostgreSQL Database (centermotorclub via Express API)
    ========================================================================== */
 
@@ -341,7 +341,7 @@ function switchTab(tabId) {
   if (activePanel) activePanel.classList.add('active');
 
   const titles = {
-    'tab-overview': { title: 'CENTER MOTOR CLUB', sub: 'High Tension & Low Tension Industrial Equipment Diagnostic Portal (PostgreSQL DB)' },
+    'tab-overview': { title: 'CENTRAL MOTOR MONITORING', sub: 'High Tension & Low Tension Industrial Equipment Diagnostic Portal (PostgreSQL DB)' },
     'tab-departments': { title: 'Master Departments Overview', sub: 'Unit-wise Testing Done & Due Breakdown' },
     'tab-inventory-ht': { title: 'High Tension (HT) Motors Inventory', sub: '6.6kV / 11kV High Voltage Equipment Diagnostics' },
     'tab-inventory-lt': { title: 'Low Tension (LT) Motors Inventory', sub: '415V Low Voltage Motor Inventory & Diagnostic Log' },
@@ -1126,7 +1126,7 @@ function renderStationQr(motor) {
   const container = document.getElementById('stationQrCanvas');
   container.innerHTML = '';
 
-  const qrPayload = `CENTER MOTOR CLUB | [${motor.motor_type}] SR: ${motor.motor_sr_no} | App: ${motor.application || motor.motor_name} | Plant: ${motor.plant} | Rating: ${motor.kw}kW (${motor.voltage || ''}, ${motor.rpm || ''}RPM) | Make: ${motor.make} | Status: ${motor.status}`;
+  const qrPayload = `CENTRAL MOTOR MONITORING | [${motor.motor_type}] SR: ${motor.motor_sr_no} | App: ${motor.application || motor.motor_name} | Plant: ${motor.plant} | Rating: ${motor.kw}kW (${motor.voltage || ''}, ${motor.rpm || ''}RPM) | Make: ${motor.make} | Status: ${motor.status}`;
 
   new QRCode(container, {
     text: qrPayload,
@@ -1174,7 +1174,7 @@ function downloadSingleMotorPdfObj(motor) {
     <div class="pdf-certificate-template">
       <div style="display: flex; justify-content: space-between; border-bottom: 2px solid #0284c7; padding-bottom: 14px; margin-bottom: 20px;">
         <div>
-          <h2 style="font-size: 20px; color: #0284c7; font-weight: 800;">CENTER MOTOR CLUB</h2>
+          <h2 style="font-size: 20px; color: #0284c7; font-weight: 800;">CENTRAL MOTOR MONITORING</h2>
           <p style="font-size: 11px; color: #64748b;">EQUIPMENT MAINTENANCE & DIAGNOSTIC CERTIFICATE</p>
         </div>
         <div style="text-align: right; font-size: 11px; color: #475569;">
@@ -1260,7 +1260,7 @@ function exportFilteredPdfSummary() {
 
   container.innerHTML = `
     <div style="padding:20px; font-family:sans-serif; background:#fff; color:#0f172a;">
-      <h2 style="color:#0284c7; margin-bottom:4px;">CENTER MOTOR CLUB MAINTENANCE SUMMARY REPORT</h2>
+      <h2 style="color:#0284c7; margin-bottom:4px;">CENTRAL MOTOR MONITORING MAINTENANCE SUMMARY REPORT</h2>
       <p style="font-size:11px; color:#64748b; margin-bottom:16px;">Total PostgreSQL Motors Listed: ${currentList.length} | Date: ${new Date().toLocaleDateString()}</p>
       <table style="width:100%; border-collapse:collapse; text-align:left;">
         <thead>

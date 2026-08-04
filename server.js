@@ -1,5 +1,5 @@
 /* ==========================================================================
-   CENTER MOTOR CLUB - EXPRESS REST API BACKEND (SECURED WITH RBAC GUARDS)
+   CENTRAL MOTOR MONITORING - EXPRESS REST API BACKEND (SECURED WITH RBAC GUARDS)
    Connected to Local PostgreSQL Database (centermotorclub on localhost:5432)
    ========================================================================== */
 
@@ -387,7 +387,7 @@ app.post('/api/motors/:id/history', requireAdmin, async (req, res) => {
 if (process.env.NODE_ENV !== 'production') {
   app.listen(PORT, () => {
     console.log('====================================================');
-    console.log(`CENTER MOTOR CLUB Express REST API Server (Secured)`);
+    console.log(`CENTRAL MOTOR MONITORING Express REST API Server (Secured)`);
     console.log(`Connected to local PostgreSQL DB: centermotorclub`);
     console.log(`Server running on http://localhost:${PORT}`);
     console.log('====================================================');
